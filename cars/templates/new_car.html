@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    .form-section {
+        padding: 30px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-section h2 {
+        color: #2ca6a4;
+        margin-bottom: 30px;
+    }
+
+    .form-group label {
+        font-weight: 600;
+        color: #555;
+    }
+
+    .invalid-feedback {
+        color: #d9534f;
+        display: block;
+    }
+
+    .btn-custom {
+        background-color: #2ca6a4;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 12px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out;
+    }
+
+    .btn-custom:hover {
+        background-color: #1f817f;
+    }
+</style>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="form-section">
+                <h2 class="text-center">Cadastro de Carro</h2>
+                <form action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    <div class="form-group">
+                        <label for="model">Modelo:</label>
+                        {{ form.model.errors }}
+                        <input type="text" id="model" name="model" class="form-control" value="{{ form.model.value }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="brand">Marca:</label>
+                        {{ form.brand.errors }}
+                        <select id="brand" name="brand" class="form-control">
+                            {% for choice in form.brand.field.queryset %}
+                                <option value="{{ choice.id }}" {% if choice.id == form.brand.value %}selected{% endif %}>{{ choice.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="factory_year">Ano de Fabricação:</label>
+                        {{ form.factory_year.errors }}
+                        <input type="number" id="factory_year" name="factory_year" class="form-control" value="{{ form.factory_year.value }}" placeholder="Digite o ano">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="model_year">Ano do Modelo:</label>
+                        {{ form.model_year.errors }}
+                        <input type="number" id="model_year" name="model_year" class="form-control" value="{{ form.model_year.value }}" placeholder="Digite o ano">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="plate">Placa:</label>
+                        {{ form.plate.errors }}
+                        <input type="text" id="plate" name="plate" class="form-control" value="{{ form.plate.value }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="value">Valor:</label>
+                        {{ form.value.errors }}
+                        <input type="text" id="value" name="value" class="form-control" value="{{ form.value.value }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Bio">Bio:</label>
+                        {{ form.bio.errors }}
+                        <input type="text" id="bio" name="bio" class="form-control" value="{{ form.bio.value }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="photo">Foto:</label>
+                        {{ form.photo.errors }}
+                        <input type="file" id="photo" name="photo" class="form-control-file">
+                    </div>
+
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn-custom">Cadastrar Carro</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
