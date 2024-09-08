@@ -51,13 +51,9 @@ class NewCarCreateView(CreateView):
 
     def form_valid(self, form):
         response = super().form_valid(form)
-        # Adicione um print para verificar se a formatação está correta
-        print(f"Form is valid: {form.cleaned_data}")
         return response
 
     def form_invalid(self, form):
-        # Adicione um print para verificar erros de formulário
-        print(f"Form is invalid: {form.errors}")
         return super().form_invalid(form)
 
 
@@ -67,7 +63,7 @@ class CarUpdateView(UpdateView):
     form_class = CarModelForm
     template_name = "car_update.html"
 
-    ##Função para após editar manter na tela de edição do carro
+    #Função para após editar manter na tela de edição do carro
     def get_success_url(self):
         return reverse_lazy("car_detail", kwargs={"pk": self.object.pk})
 
