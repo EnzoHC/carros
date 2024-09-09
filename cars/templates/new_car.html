@@ -4,19 +4,19 @@
 <style>
     .form-section {
         padding: 30px;
-        background-color: #fff;
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: #003d3b;
     }
 
     .form-section h2 {
-        color: #2ca6a4;
+        color: #ffffff;
         margin-bottom: 30px;
     }
 
     .form-group label {
         font-weight: 600;
-        color: #555;
+        color: #ffffff;
     }
 
     .invalid-feedback {
@@ -25,7 +25,7 @@
     }
 
     .btn-custom {
-        background-color: #2ca6a4;
+        background-color: #5db4b4;
         color: white;
         border: none;
         border-radius: 8px;
@@ -44,14 +44,14 @@
     <div class="row justify-content-center">
         <div class="col-md-8 col-lg-6">
             <div class="form-section">
-                <h2 class="text-center">Cadastro de Carro</h2>
+                <h2 class="text-center">Cadastro de Carros</h2>
                 <form action="" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
 
                     <div class="form-group">
                         <label for="model">Modelo:</label>
                         {{ form.model.errors }}
-                        <input type="text" id="model" name="model" class="form-control" value="{{ form.model.value }}">
+                        <input type="text" id="model" name="model" class="form-control" value="{{ form.model.value|default_if_none:'' }}" placeholder="Digite o modelo">
                     </div>
 
                     <div class="form-group">
@@ -79,13 +79,13 @@
                     <div class="form-group">
                         <label for="plate">Placa:</label>
                         {{ form.plate.errors }}
-                        <input type="text" id="plate" name="plate" class="form-control" value="{{ form.plate.value }}">
+                        <input type="text" id="plate" name="plate" class="form-control" value="{{ form.plate.value|default_if_none:'' }}" placeholder="Digite a placa">
                     </div>
 
                     <div class="form-group">
                         <label for="value">Valor:</label>
                         {{ form.value.errors }}
-                        <input type="text" id="value" name="value" class="form-control" value="{{ form.value.value }}">
+                        <input type="text" id="value" name="value" class="form-control" value="{{ form.value.value|default_if_none:'' }}" placeholder="Digite o valor">
                     </div>
 
                     <div class="form-group">

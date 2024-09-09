@@ -6,22 +6,32 @@
     <title>{% block title %}Ozne Multimarcas{% endblock %}</title>
     <!-- Adiciona o Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="https://www.flaticon.com/br/icones-gratis/carro" title="carro ícones" type="image/x-icon">
     <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(135deg, #b7d3ba, #90dbd8);
+        }
+
         .content {
+            flex: 1;
             padding: 20px;
             margin-top: 60px;
-            min-height: calc(100vh - 120px);
         }
 
         .footer {
             background-color: #003d3b;
             color: white;
             text-align: center;
-            padding: 10px;
-            position: relative;
-            bottom: 0;
+            padding: 20px;
+            margin-top: 0;
             width: 100%;
-            margin-top: 20px;
         }
 
         .navbar-custom {
@@ -29,10 +39,7 @@
             background-color: #003d3b;
         }
 
-        .navbar-custom .navbar-brand {
-            color: white;
-        }
-
+        .navbar-custom .navbar-brand,
         .navbar-custom .navbar-nav .nav-link {
             color: white;
         }
