@@ -63,7 +63,7 @@ class CarUpdateView(UpdateView):
     form_class = CarModelForm
     template_name = "car_update.html"
 
-    #Função para após editar manter na tela de edição do carro
+    # Função para após editar manter na tela de edição do carro
     def get_success_url(self):
         return reverse_lazy("car_detail", kwargs={"pk": self.object.pk})
 
